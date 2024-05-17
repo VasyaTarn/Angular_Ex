@@ -1,0 +1,21 @@
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200" />
+
+<div class="container bg-primary">
+    <a class="routeLogo" routerLink="" routerLinkActive="active">
+        <img src="assets/Imgs/clinic.svg" alt="">
+    </a>
+    <div class="authorization">
+        @if(logInStatus)
+        {
+            <h5 class="name">{{userName}}</h5>
+            <img class="icon" src="assets/Imgs/user_icon.png" alt="">
+
+            <a class="logout material-symbols-outlined" (click)="logout()">logout</a>
+        }
+        @else
+        {
+            <a class="signup" routerLink="/signUp" routerLinkActive="active"><h5>SIGN UP</h5></a>
+            <a class="login" routerLink="/logIn" routerLinkActive="active"><h5>LOG IN</h5></a>
+        }
+    </div>
+</div>

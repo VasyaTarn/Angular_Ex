@@ -1,0 +1,59 @@
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200" />
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200" />
+
+<div class="card">
+  @if(editStatus) 
+  {
+    <div class="card-body">
+      <h5 class="flName card-title"><input class="form-control mb-2" type="text" [(ngModel)]="doctors[index].doctorData.firstName"> <input class="form-control mb-2" type="text" [(ngModel)]="doctors[index].doctorData.lastName"></h5>
+      <h6 class="card-subtitle mb-2 text-muted"><input class="form-control mb-2" type="text" [(ngModel)]="doctors[index].doctorData.specialization"></h6>
+      <p class="card-text">Phone: <input class="form-control mb-2" type="text" [(ngModel)]="doctors[index].doctorData.phoneNumber"></p>
+      <button class="btn btn-success" (click)="saveUser()">Save</button>
+    </div>
+  }
+  @else
+  {
+    <div class="card-body">
+      <h5 class="card-title">{{doctors[index].doctorData.firstName}} {{doctors[index].doctorData.lastName}}</h5>
+      <h6 class="card-subtitle mb-2 text-muted">{{doctors[index].doctorData.specialization}}</h6>
+      <p class="card-text">Phone: {{doctors[index].doctorData.phoneNumber}}</p>
+      <button class="material-symbols-outlined btn btn-warning" (click)="edit()">Edit</button>
+    </div>
+  }
+
+  <div class="card-body">
+    <h4>Client:</h4>
+    @if (doctors[index].isClientEmpty) 
+    {
+      <h6 class="card-subtitle mb-2 text-muted">Empty</h6>
+      <br>
+      <br>
+      <button class="btn btn-success custom-btn mt-2 ml-auto" (click)="makeApp()">
+        Make an appointment
+      </button>
+    }
+    @else
+    {
+      <h5 class="card-title">{{doctors[index].clientName}}</h5>
+      <h6 class="card-subtitle mb-2 text-muted">{{doctors[index].clientEmail}}</h6>
+      <div class="clientDate">
+        @if (!editDateStatus) 
+        {
+          <p class="card-text mb-0">{{doctors[index].appointmentDate}}</p>
+          <button class="material-symbols-outlined btn btn-warning btn-sm" (click)="editDate()">Edit</button>
+        }
+        @else 
+        {
+          <input type="datetime-local" class="form-control" [(ngModel)]="doctors[index].appointmentDate">
+          <button class="material-symbols-outlined btn btn-success btn-sm" (click)="saveDate()">done</button>
+        }
+      </div>
+      
+      <button class="btn btn-danger custom-btn mt-2 ml-auto" (click)="cancelApp()">
+        Cancel an appointment
+      </button> 
+    }
+  </div>
+
+</div>
+

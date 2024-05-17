@@ -1,0 +1,32 @@
+<link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+
+<div class="container">
+    <form [formGroup]="form" (ngSubmit)="onSubmit()">
+        <div formGroupName="doctorData">
+            <h1>Adding a doctor</h1>
+
+            @for (field of doctorForm; track $index) 
+            {
+                <div class="form-group">
+                    <h2>{{field.fieldName}}</h2>
+                    <input type="{{field.type}}" class="form-control" formControlName="{{field.formName}}">
+                </div>
+            }
+
+            <button class="btn btn-success mt-2 mb-3" type="submit" [disabled]="form.invalid">Submit</button>
+
+            <div class="row">
+                <div class="col-md-3 mb-5" *ngFor="let doctor of doctors; let i = index">
+                    <app-doctors-list [doctors]="doctors" [index]="i"></app-doctors-list>
+                    <button class="btn btn-danger custom-btn mt-2" (click)="deleteDoctor(i)">
+                    <i class="material-icons text-md">delete</i>
+                    </button>
+                  </div>
+            </div>
+
+            
+            
+
+        </div>
+    </form>
+</div>

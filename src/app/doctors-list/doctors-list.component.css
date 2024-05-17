@@ -1,0 +1,15 @@
+.flName > input{
+    width: 50%;
+    margin-right: 5px;
+}
+
+.flName{
+    display: flex;
+    flex-direction: row;
+}
+
+.clientDate{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
